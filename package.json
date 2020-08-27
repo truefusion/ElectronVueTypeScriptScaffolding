@@ -20,6 +20,7 @@
     "lodash-id": "^0.14.0",
     "lowdb": "^1.0.0",
     "moment": "^2.27.0",
+    "tesseract.js": "^2.1.1",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.5",
     "vue-i18n": "^8.20.0",

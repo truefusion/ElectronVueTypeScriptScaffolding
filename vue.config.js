@@ -52,7 +52,7 @@ module.exports = {
       // Provide an array of files that, when changed, will recompile the main process and restart Electron
       // Your main process file will be added by default
       //mainProcessWatch: ['src/myFile1', 'src/myFile2'],
-      mainProcessWatch: ['src/preload.js'],
+      mainProcessWatch: ['dist_electron/preload.js'],
       // Provide a list of arguments that Electron will be launched with during "electron:serve",
       // which can be accessed from the main process (src/background.js).
       // Note that it is ignored when --debug flag is used with "electron:serve", as you must launch Electron yourself
@@ -78,3 +78,15 @@ module.exports = {
 // https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration
 // https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/guide.html#examples
 
+
+// https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/guide.html#preload-files
+
+module.exports = {
+  pluginOptions: {
+    electronBuilder: {
+      preload: 'dist_electron/preload.js',
+      // Or, for multiple preload files:
+      //preload: { preload: 'src/preload.js', otherPreload: 'src/preload2.js' }
+    }
+  }
+}

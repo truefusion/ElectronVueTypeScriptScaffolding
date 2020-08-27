@@ -6,3 +6,10 @@ module.exports = {
     filename: 'background.js'
   }
 }
+
+module.exports = {
+  plugins: [
+    new WorkerPlugin()
+  ]
+}
+

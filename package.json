@@ -52,6 +52,7 @@
     "typescript": "^3.9.7",
     "vue-cli-plugin-electron-builder": "~2.0.0-rc.4",
     "vue-template-compiler": "^2.6.11",
-    "webpack": "^4.44.1"
+    "webpack": "^4.44.1",
+    "worker-plugin": "^5.0.0"
   }
 }

@@ -90,3 +90,14 @@ module.exports = {
     }
   }
 }
+
+// https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/guide.html#web-workers
+
+const WorkerPlugin = require('worker-plugin')
+
+module.exports = {
+  configureWebpack: {
+    plugins: [new WorkerPlugin()]
+  }
+}
+

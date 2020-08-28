@@ -27,9 +27,7 @@ module.exports = {
   }
 }
 
-
 // https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/configuration.html#webpack-configuration
-
 module.exports = {
   configureWebpack: {
     // Configuration applied to all builds
@@ -52,7 +50,7 @@ module.exports = {
       // Provide an array of files that, when changed, will recompile the main process and restart Electron
       // Your main process file will be added by default
       //mainProcessWatch: ['src/myFile1', 'src/myFile2'],
-      mainProcessWatch: ['dist_electron/preload.js'],
+      //mainProcessWatch: ['dist_electron/preload.js'],
       // Provide a list of arguments that Electron will be launched with during "electron:serve",
       // which can be accessed from the main process (src/background.js).
       // Note that it is ignored when --debug flag is used with "electron:serve", as you must launch Electron yourself
@@ -63,7 +61,6 @@ module.exports = {
 }
 
 // https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/configuration.html#typescript-options
-
 module.exports = {
   pluginOptions: {
     electronBuilder: {
@@ -74,13 +71,7 @@ module.exports = {
   }
 }
 
-
-// https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration
-// https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/guide.html#examples
-
-
 // https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/guide.html#preload-files
-
 module.exports = {
   pluginOptions: {
     electronBuilder: {
@@ -91,8 +82,16 @@ module.exports = {
   }
 }
 
-// https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/guide.html#web-workers
+// https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration
+module.exports = {
+  pluginOptions: {
+    electronBuilder: {
+      nodeIntegration: true
+    }
+  }
+}
 
+// https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/guide.html#web-workers
 const WorkerPlugin = require('worker-plugin')
 
 module.exports = {
@@ -100,4 +99,3 @@ module.exports = {
     plugins: [new WorkerPlugin()]
   }
 }
-

@@ -8,7 +8,6 @@ module.exports = {
 }
 
 // https://github.com/GoogleChromeLabs/worker-plugin
-
 module.exports = {
   plugins: [
     new WorkerPlugin()

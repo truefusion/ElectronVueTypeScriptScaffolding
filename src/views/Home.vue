@@ -1,19 +1,18 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Ipc />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Ipc from '@/components/Ipc.vue'
 //import { ipcRenderer } from 'electron'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    Ipc
   }
 }
 </script>

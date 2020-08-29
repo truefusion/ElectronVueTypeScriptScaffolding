@@ -35,7 +35,7 @@ module.exports = {
           return args
         })
       },
-      mainProcessFile: 'src/background.js',
+      mainProcessFile: 'src/background.ts',
       // https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/configuration.html#typescript-options
       disableMainProcessTypescript: false, // Manually disable typescript plugin for main process. Enable if you want to use regular js for the main process (src/background.js by default)
       mainProcessTypeChecking: false, // Manually enable type checking during webpck bundling for background file.

@@ -4,13 +4,9 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'build'),
     filename: 'background.js'
-  }
-}
-
-// https://github.com/GoogleChromeLabs/worker-plugin
-module.exports = {
+  },
+  // https://github.com/GoogleChromeLabs/worker-plugin
   plugins: [
     new WorkerPlugin()
   ]
 }
-

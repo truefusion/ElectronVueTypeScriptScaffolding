@@ -49,10 +49,4 @@ module.exports = {
       plugins: [new WorkerPlugin()]
     }
   }
-
-  // https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/guide.html#web-workers
-  configureWebpack: {
-    plugins: [new WorkerPlugin()]
-  }
-
 }

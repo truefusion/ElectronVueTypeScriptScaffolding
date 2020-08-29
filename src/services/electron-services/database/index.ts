@@ -7,17 +7,18 @@ import fs from 'fs-extra'
 import LodashID from 'lodash-id'
 import { app, remote } from 'electron'
 
-export interface Schema {
+interface Schema {
   windowSize: {
-    height: number,
-    width: number,
-  },
+    height: number
+    width: number
+  }
   settings: {
-    //currentLang: string,
-    currentTheme: string,
-  },
-  //connections: [],
-  //suggestConnections: [],
+    autoCheck: boolean
+    currentLang: string
+    currentTheme: string
+  }
+  connections: []
+  suggestConnections: []
 }
 
 const isRenderer: boolean = process.type === 'renderer'
@@ -38,9 +39,7 @@ if (!isRenderer) {
 class DB {
   private db: Lowdb.LowdbSync<Schema>
   public constructor() {
-    const adapter: Lowdb.AdapterSync<Schema> = new FileSync<Schema>(
-      path.join(STORE_PATH, '/db.json'),
-    )
+    const adapter: Lowdb.AdapterSync<Schema> = new FileSync<Schema>(path.join(STORE_PATH, '/db.json'))
     this.db = Lowdb(adapter)
     // Use lodash-id must use insert methods
     this.db._.mixin(LodashID)
@@ -55,24 +54,32 @@ class DB {
     if (!this.db.has('settings').value()) {
       this.db
         .set('settings', {
-          //currentLang: 'en',
+          autoCheck: true,
+          currentLang: 'en',
           currentTheme: 'light',
+          maxReconnectTimes: 10,
         })
         .write()
+    }
+    // Set max reconnection times
+    if (!this.db.get('settings.maxReconnectTimes').value()) {
+      this.db.set('settings.maxReconnectTimes', 10).write()
     }
     // Purple to Night
     if (this.db.get('settings.currentTheme').value() === 'purple') {
       this.db.set('settings.currentTheme', 'night').write()
     }
     if (this.db.has('brokers').value()) {
-      this.db
-        .unset('brokers')
-        .write()
+      this.db.unset('brokers').write()
     }
     if (this.db.has('clients').value()) {
-      this.db
-        .unset('clients')
-        .write()
+      this.db.unset('clients').write()
+    }
+    if (!this.db.has('connections').value()) {
+      this.db.set('connections', []).write()
+    }
+    if (!this.db.has('suggestConnections').value()) {
+      this.db.set('suggestConnections', []).write()
     }
   }
   // read() is to keep the data of the main process and the rendering process up to date.
@@ -80,50 +87,33 @@ class DB {
     return this.db.read()
   }
   public get<T>(key: string): T {
-    return this.read()
-      .get(key)
-      .value()
+    return this.read().get(key).value()
   }
   public find<T>(key: string, id: string): T {
     const data: $TSFixed = this.read().get(key)
-    return data
-      .find({ id })
-      .value()
+    return data.find({ id }).value()
   }
   public set<T>(key: string, value: T): T {
-    return this.read()
-      .set(key, value)
-      .write()
+    return this.read().set(key, value).write()
   }
   public insert<T>(key: string, value: T): T {
     const data: $TSFixed = this.read().get(key)
-    return data
-      .insert(value)
-      .write()
+    return data.insert(value).write()
   }
   public update<T>(key: string, id: string, value: T): T {
     const data: $TSFixed = this.read().get(key)
-    return data
-      .find({ id })
-      .assign(value)
-      .write()
+    return data.find({ id }).assign(value).write()
   }
   public remove<T>(key: string, id: string): T {
     const data: $TSFixed = this.read().get(key)
-    return data
-      .removeById(id)
-      .write()
+    return data.removeById(id).write()
   }
   public filter<T, K>(key: string, query: K): T {
     const data: $TSFixed = this.read().get(key)
-    return data
-      .filter(query)
-      .value()
+    return data.filter(query).value()
   }
   public has(key: string): boolean {
-    return this.read()
-      .has(key)
-      .value()
+    return this.read().has(key).value()
   }
 }
 

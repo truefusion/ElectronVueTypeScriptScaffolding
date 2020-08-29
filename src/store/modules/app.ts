@@ -3,7 +3,8 @@ import { loadSettings, setSettings } from '@/services/electron-services/setting/
 
 const TOGGLE_THEME = 'TOGGLE_THEME'
 
-const stateRecord: App = loadSettings();
+const stateRecord: App = loadSettings()
+
 
 const app = {
   state: {
@@ -12,7 +13,7 @@ const app = {
   mutations: {
     [TOGGLE_THEME](state: App, currentTheme: Theme) {
       state.currentTheme = currentTheme
-    }
+    },
   },
   actions: {
     TOGGLE_THEME({ commit }: any, payload: App) {

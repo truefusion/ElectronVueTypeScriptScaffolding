@@ -1,5 +1,5 @@
 module.exports = {
-  entry: './src/background.js',
+  entry: './src/background.ts',
   target: 'node',
   output: {
     path: path.join(__dirname, 'build'),

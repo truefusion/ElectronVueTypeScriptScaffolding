@@ -8,7 +8,6 @@ const path = require("path")
 
 import db from './services/electron-services/database/index'
 
-import getMenuTemplate from './main/getMenuTemplate'
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -48,6 +47,7 @@ async function createWindow() {
       // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
       //nodeIntegration: (process.env
       //    .ELECTRON_NODE_INTEGRATION as unknown) as boolean,
+      //nodeIntegration: true,
       nodeIntegration: false,
       contextIsolation: true, // protects against prototype pollution
       preload: path.join(__dirname, "../dist_electron/preload.js"),
@@ -55,12 +55,6 @@ async function createWindow() {
     titleBarStyle: isMac ? 'hidden' : 'default',
     backgroundColor: theme === 'dark' ? '#232323' : '#ffffff',
   })
-
-
-  // Menu Manager
-  const templateMenu = getMenuTemplate(win)
-  menu = Menu.buildFromTemplate(templateMenu)
-  Menu.setApplicationMenu(menu)
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode

@@ -75,7 +75,8 @@ module.exports = {
 module.exports = {
   pluginOptions: {
     electronBuilder: {
-      preload: 'dist_electron/preload.js',
+      preload: 'src/preload.js',
+      //preload: 'dist_electron/preload.js',
       // Or, for multiple preload files:
       //preload: { preload: 'src/preload.js', otherPreload: 'src/preload2.js' }
     }

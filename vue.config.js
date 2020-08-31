@@ -42,8 +42,8 @@ module.exports = {
       // https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/guide.html#preload-files
       preload: 'src/preload.js',
       // https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration
-      //nodeIntegration: true
-      nodeIntegration: false
+      nodeIntegration: true
+      //nodeIntegration: false
     },
     // https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/guide.html#web-workers
     configureWebpack: {

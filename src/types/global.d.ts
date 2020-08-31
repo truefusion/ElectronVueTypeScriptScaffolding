@@ -24,6 +24,19 @@ declare global {
       resetFields: () => void,
   }
 
+  interface SSLPath {
+      rejectUnauthorized?: boolean,
+      ca: string,
+      cert: string,
+      key: string,
+  }
+
+  interface SSLContent {
+      ca: string | string[] | Buffer | Buffer[] | undefined,
+      cert: string | string[] | Buffer | Buffer[] | undefined,
+      key: string | string[] | Buffer | Buffer[] | undefined,
+  }
+
   interface Options {
       label: string | TranslateResult,
       value: any,
@@ -31,9 +44,79 @@ declare global {
       disabled?: boolean,
   }
 
+  interface userId {
+      name: string,
+      surname: string,
+      companyname: string
+  }
+
+  interface CollabSession {
+      readonly id: string,
+      readonly timestamp: Date,
+      collabsession_users: userId[],
+  }
+
+  interface ActiveCollabSession {
+      readonly id: string,
+      readonly timestamp: Date
+  }
+
+  interface AccountCheck {
+      readonly paymentCheck: boolean,
+      readonly biometricAuthorized: boolean,
+      readonly companyCheck: boolean,
+  }
+
+  interface ActiveSimulation {
+      readonly id: string,
+      readonly timestap: Date
+  }
+
+  type encryptedBlob = CryptoKeyPair;
+
+  interface SimulationModel {
+      id: string,
+      timestamp: Date,
+      // https://developer.mozilla.org/en-US/docs/Web/API/Blob
+      simulationData:  encryptedBlob,
+  }
+
+  interface Simulations {
+      id: string,
+      timestamp: Date,
+      simulations: SimulationModel[],
+  }
+
+  // https://github.com/hello-efficiency-inc/raven-reader
+  interface ActiveInfoSubscription {
+      readonly topic: string,
+      readonly timestamp: Date
+  
+  }
+
+  interface InfoSubscriptionModel {
+      topic: string,
+      retain?: boolean
+  }
+
+  interface InfoSubscriptions {
+      subscriptions: InfoSubscriptionModel[],
+  }
+
+  interface InfoSubscriptionsVisible {
+      showInfoSubscription: boolean,
+  }
+
   interface App {
       currentTheme: Theme,
-      currentLang: Language,
+      //currentLang: Language,
+      //showInfoSubscriptions: boolean,
+      //activeSimulation: {
+      //    [id: string]: {
+      //        collab_session: CollabSession
+      //    }
+      //},
+      //allSimulations: SimulationModel[] | [],
   }
 
   interface State {

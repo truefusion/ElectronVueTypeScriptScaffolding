@@ -1,5 +1,3 @@
-// https://github.com/emqx/MQTTX/blob/master/src/database/index.ts
-
 import Lowdb from 'lowdb'
 import FileSync from 'lowdb/adapters/FileSync'
 import path from 'path'
@@ -13,12 +11,9 @@ interface Schema {
     width: number
   }
   settings: {
-    autoCheck: boolean
     currentLang: string
     currentTheme: string
   }
-  connections: []
-  suggestConnections: []
 }
 
 const isRenderer: boolean = process.type === 'renderer'
@@ -54,32 +49,17 @@ class DB {
     if (!this.db.has('settings').value()) {
       this.db
         .set('settings', {
-          autoCheck: true,
-          currentLang: 'en',
+          //currentLang: 'en',
           currentTheme: 'light',
-          maxReconnectTimes: 10,
         })
         .write()
-    }
-    // Set max reconnection times
-    if (!this.db.get('settings.maxReconnectTimes').value()) {
-      this.db.set('settings.maxReconnectTimes', 10).write()
     }
     // Purple to Night
     if (this.db.get('settings.currentTheme').value() === 'purple') {
       this.db.set('settings.currentTheme', 'night').write()
     }
-    if (this.db.has('brokers').value()) {
-      this.db.unset('brokers').write()
-    }
-    if (this.db.has('clients').value()) {
-      this.db.unset('clients').write()
-    }
-    if (!this.db.has('connections').value()) {
-      this.db.set('connections', []).write()
-    }
-    if (!this.db.has('suggestConnections').value()) {
-      this.db.set('suggestConnections', []).write()
+    if (!this.db.has('settings.currentLang')) {
+      this.db.set('settings.currentLang', 'en').write()
     }
   }
   // read() is to keep the data of the main process and the rendering process up to date.

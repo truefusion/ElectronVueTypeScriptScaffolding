@@ -8,7 +8,8 @@ module.exports = {
     electronBuilder: {
       // Prevent bundling of certain imported packages and instead retrieve these external dependencies at runtime.
       // In order to connect to websocket.
-      externals: ['ggc'],
+      // https://github.com/nklayman/vue-cli-plugin-electron-builder/issues/652#issuecomment-583764345
+      externals: ['ggc', 'tesseract.js'],
       builderOptions: {
         productName: 'GGC',
         win: {

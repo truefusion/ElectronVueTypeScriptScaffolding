@@ -8,9 +8,9 @@ const stateRecord: App = loadSettings()
 
 const app = {
   state: {
-    //currentTheme: stateRecord.currentTheme || 'light',
+    currentTheme: stateRecord.currentTheme || 'light',
     //currentLang: stateRecord.currentLang || 'en',
-    currentTheme: 'light',
+    //currentTheme: 'light',
   },
   mutations: {
     [TOGGLE_THEME](state: App, currentTheme: Theme) {

@@ -67,8 +67,8 @@ class DB {
     return this.db.read()
   }
   public get<T>(key: string): T {
-    //return this.read().get(key).value()
-    return this.db.get(key).value()
+    return this.read().get(key).value()
+    //return this.db.get(key).value()
   }
   public find<T>(key: string, id: string): T {
     const data: $TSFixed = this.read().get(key)

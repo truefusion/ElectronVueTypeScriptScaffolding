@@ -8,6 +8,7 @@ const path = require("path")
 
 import db from './services/electron-services/database/index'
 
+import getMenuTemplate from './main/getMenuTemplate'
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -27,8 +28,6 @@ interface WindowSizeModel {
   width: number,
   height: number,
 }
-
-declare const __static: string
 
 function handleIpcMessages() {
   ipcMain.on('setting', (event: any, ...args: any[]) => {
@@ -53,8 +52,14 @@ async function createWindow() {
       preload: path.join(__dirname, "../dist_electron/preload.js"),
     },
     titleBarStyle: isMac ? 'hidden' : 'default',
-    //backgroundColor: theme === 'dark' ? '#232323' : '#ffffff',
+    backgroundColor: theme === 'dark' ? '#232323' : '#ffffff',
   })
+
+  // Menu Manager
+  const templateMenu = getMenuTemplate(win)
+  menu = Menu.buildFromTemplate(templateMenu)
+  Menu.setApplicationMenu(menu)
+
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode

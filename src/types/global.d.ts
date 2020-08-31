@@ -24,13 +24,6 @@ declare global {
       resetFields: () => void,
   }
 
-  interface SSLPath {
-      rejectUnauthorized?: boolean,
-      ca: string,
-      cert: string,
-      key: string,
-  }
-
   interface Options {
       label: string | TranslateResult,
       value: any,

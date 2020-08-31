@@ -9,7 +9,7 @@
 // @ is an alias to /src
 
 import { Component, Vue } from 'vue-property-decorator'
-//import { Getter } from 'vuex-class'
+import { Getter } from 'vuex-class'
 import Ipc from '@/components/Ipc.vue'
 
 @Component({

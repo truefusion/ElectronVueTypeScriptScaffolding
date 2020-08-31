@@ -67,14 +67,16 @@ class DB {
     return this.db.read()
   }
   public get<T>(key: string): T {
-    return this.read().get(key).value()
+    //return this.read().get(key).value()
+    return this.db.get(key).value()
   }
   public find<T>(key: string, id: string): T {
     const data: $TSFixed = this.read().get(key)
     return data.find({ id }).value()
   }
   public set<T>(key: string, value: T): T {
-    return this.read().set(key, value).write()
+    //return this.read().set(key, value).write()
+    return this.db.set(key, value).write()
   }
   public insert<T>(key: string, value: T): T {
     const data: $TSFixed = this.read().get(key)

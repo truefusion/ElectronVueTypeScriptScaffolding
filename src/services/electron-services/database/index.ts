@@ -11,7 +11,7 @@ interface Schema {
     width: number
   }
   settings: {
-    currentLang: string
+    //currentLang: string
     currentTheme: string
   }
 }
@@ -58,9 +58,9 @@ class DB {
     if (this.db.get('settings.currentTheme').value() === 'purple') {
       this.db.set('settings.currentTheme', 'night').write()
     }
-    if (!this.db.has('settings.currentLang')) {
-      this.db.set('settings.currentLang', 'en').write()
-    }
+    //if (!this.db.has('settings.currentLang')) {
+      //this.db.set('settings.currentLang', 'en').write()
+    //}
   }
   // read() is to keep the data of the main process and the rendering process up to date.
   public read() {

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Ipc @setTheme="setTheme" />
+    <Ipc />
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 // @ is an alias to /src
 
 import { Component, Vue } from 'vue-property-decorator'
-import { Getter } from 'vuex-class'
+//import { Getter } from 'vuex-class'
 import Ipc from '@/components/Ipc.vue'
 
 @Component({
@@ -20,26 +20,19 @@ import Ipc from '@/components/Ipc.vue'
 
 
 export default class Home extends Vue {
-  @Getter('currentTheme') private getterTheme!: Theme
+  //@Getter('currentTheme') private getterTheme!: Theme
 
-  private setTheme(currentTheme: Theme): void {
-    const bodyTag: HTMLBodyElement | null = document.querySelector('body')
-    if (!bodyTag) {
-      return
-    }
-    bodyTag.className = currentTheme
-  }
+  //private setTheme(currentTheme: Theme): void {
+  //  const bodyTag: HTMLBodyElement | null = document.querySelector('body')
+  //  if (!bodyTag) {
+  //    return
+  //  }
+  //  bodyTag.className = currentTheme
+  //}
 
-  private created() {
-    this.setTheme(this.getterTheme)
-  }
+  //private created() {
+  //  this.setTheme(this.getterTheme)
+  //}
 }
 
-
-//export default {
-//  name: 'Home',
-//  components: {
-//    Ipc
-//  }
-//}
 </script>

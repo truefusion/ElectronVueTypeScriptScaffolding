@@ -8,23 +8,23 @@ const stateRecord: App = loadSettings()
 
 const app = {
   state: {
-    currentTheme: stateRecord.currentTheme || 'light',
+    //currentTheme: stateRecord.currentTheme || 'light',
     //currentLang: stateRecord.currentLang || 'en',
     //currentTheme: 'light',
   },
   mutations: {
-    [TOGGLE_THEME](state: App, currentTheme: Theme) {
-      state.currentTheme = currentTheme
-    },
+    //[TOGGLE_THEME](state: App, currentTheme: Theme) {
+    //  state.currentTheme = currentTheme
+    //},
     //[TOGGLE_LANG](state: App, currentLang: Language) {
     //  state.currentLang = currentLang
     //},
   },
   actions: {
-    TOGGLE_THEME({ commit }: any, payload: App) {
-      setSettings('settings.currentTheme', payload.currentTheme)
-      commit(TOGGLE_THEME, payload.currentTheme)
-    },
+    //TOGGLE_THEME({ commit }: any, payload: App) {
+    //  setSettings('settings.currentTheme', payload.currentTheme)
+    //  commit(TOGGLE_THEME, payload.currentTheme)
+    //},
     //TOGGLE_LANG({ commit }: any, payload: App) {
     //  setSettings('settings.currentLang', payload.currentLang)
     //  commit(TOGGLE_LANG, payload.currentLang)

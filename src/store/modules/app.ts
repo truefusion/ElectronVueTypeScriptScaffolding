@@ -1,14 +1,15 @@
 import Vue from 'vue'
-import { loadSettings, setSettings } from '@/services/electron-services/setting/setting'
+//import { loadSettings, setSettings } from '@/services/electron-services/setting/setting'
+import { setSettings } from '@/services/electron-services/setting/setting'
 
 const TOGGLE_THEME = 'TOGGLE_THEME'
 const TOGGLE_LANG = 'TOGGLE_LANG'
 
-const stateRecord: App = loadSettings()
+//const stateRecord: App = loadSettings()
 
 const app = {
   state: {
-    //currentTheme: stateRecord.currentTheme || 'light',
+    //currentTheme: stateRecord.currentTheme || 'dark',
     //currentLang: stateRecord.currentLang || 'en',
     //currentTheme: 'light',
   },
@@ -21,10 +22,10 @@ const app = {
     //},
   },
   actions: {
-    //TOGGLE_THEME({ commit }: any, payload: App) {
-    //  setSettings('settings.currentTheme', payload.currentTheme)
-    //  commit(TOGGLE_THEME, payload.currentTheme)
-    //},
+    TOGGLE_THEME({ commit }: any, payload: App) {
+      setSettings('settings.currentTheme', payload.currentTheme)
+      commit(TOGGLE_THEME, payload.currentTheme)
+    },
     //TOGGLE_LANG({ commit }: any, payload: App) {
     //  setSettings('settings.currentLang', payload.currentLang)
     //  commit(TOGGLE_LANG, payload.currentLang)

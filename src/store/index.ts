@@ -13,8 +13,8 @@ export default new Vuex.Store({
   //},
   //actions: {
   //},
-  //modules: {
-  //  app,
-  //},
+  modules: {
+    app,
+  },
   getters,
 })

@@ -46,10 +46,10 @@ async function createWindow() {
       // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
       //nodeIntegration: (process.env
       //    .ELECTRON_NODE_INTEGRATION as unknown) as boolean,
-      nodeIntegration: true,
-      //nodeIntegration: false,
-      //contextIsolation: true, // protects against prototype pollution
-      //preload: path.join(__dirname, "../dist_electron/preload.js"),
+      //nodeIntegration: true,
+      nodeIntegration: false,
+      contextIsolation: true, // protects against prototype pollution
+      preload: path.join(__dirname, "../dist_electron/preload.js"),
     },
     titleBarStyle: isMac ? 'hidden' : 'default',
     backgroundColor: theme === 'dark' ? '#232323' : '#ffffff',

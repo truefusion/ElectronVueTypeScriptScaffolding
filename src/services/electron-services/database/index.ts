@@ -34,7 +34,8 @@ if (!isRenderer) {
 class DB {
   private db: Lowdb.LowdbSync<Schema>
   public constructor() {
-    const adapter: Lowdb.AdapterSync<Schema> = new FileSync<Schema>(path.join(STORE_PATH, '/db.json'))
+    // const adapter: Lowdb.AdapterSync<Schema> = new FileSync<Schema>(path.join(STORE_PATH, '/db.json'))
+    const adapter= new FileSync('db.json')
     this.db = Lowdb(adapter)
     // Use lodash-id must use insert methods
     this.db._.mixin(LodashID)

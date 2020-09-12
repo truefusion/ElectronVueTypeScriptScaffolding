@@ -14,7 +14,7 @@ export default new Vuex.Store({
   //actions: {
   //},
   modules: {
-    app,
+    //app,
   },
   getters,
 })

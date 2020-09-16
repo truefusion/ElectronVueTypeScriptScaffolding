@@ -1,9 +1,10 @@
+const { app, remote } = window.require('electron')
+
 import Lowdb from 'lowdb'
 import FileSync from 'lowdb/adapters/FileSync'
 import path from 'path'
-import fs from 'fs-extra'
+const fs = remote.require('fs-extra')
 import LodashID from 'lodash-id'
-import { app, remote } from 'electron'
 
 interface Schema {
   windowSize: {
